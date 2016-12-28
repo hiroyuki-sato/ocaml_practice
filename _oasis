@@ -1,0 +1,30 @@
+Name: Test
+Version: 0.1
+Synopsis: test
+Authors: Hiroyuki Sato <hiroysato@gmail.com>
+License: MIT
+
+Description: ocaml practice
+Homepage: https://github.com/hiroyuki-sato/ocaml_practice
+
+OASISFormat: 0.4
+BuildTools: ocamlbuild
+Plugins: META (0.4), DevFiles (0.4)
+
+#Library "mytest"
+#  Path: src
+#  Modules: Mytest
+
+Executable "mytest"
+  Path: src
+  MainIs: mytest.ml
+  CompiledObject: best
+
+Test "mytest_test"
+  Run$: flag(tests)
+  TestTools: my_test
+  Command: $my_test
+  WorkingDirectory: test
+
+
+
